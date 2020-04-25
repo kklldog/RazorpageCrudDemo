@@ -1,0 +1,36 @@
+﻿@page
+@model RazorPageCRUD.ListModel
+@{
+    ViewData["Title"] = "List";
+}
+
+<h1>List</h1>
+
+<p>
+    <a class="btn btn-primary" asp-page="Add">Add</a>
+</p>
+<table class="table">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Class</th>
+        <th>Sex</th>
+        <th></th>
+    </tr>
+    @foreach (var student in Model.Students)
+    {
+        <tr>
+            <td>@student.Id</td>
+            <td>@student.Name</td>
+            <td>@student.Age</td>
+            <td>@student.Class</td>
+            <td>@student.Sex</td>
+            <td>
+                <a class="btn btn-primary" asp-page="Update" asp-route-id="@student.Id">Update</a>
+                <a class="btn btn-danger" href="/student/delete?id=@student.Id" >Delete</a>
+            </td>
+        </tr>
+    }
+
+</table>
